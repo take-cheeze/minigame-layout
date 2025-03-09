@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bnq73h7eejnt3"]
+
+[node name="メイン画面" type="Node"]
+
+[node name="お手本" type="Node2D" parent="."]
+position = Vector2(301, 207)
+
+[node name="盛り付け" type="Node2D" parent="."]
+position = Vector2(787, 234)
