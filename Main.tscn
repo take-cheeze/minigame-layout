@@ -1,9 +1,57 @@
-[gd_scene format=3 uid="uid://bnq73h7eejnt3"]
+[gd_scene load_steps=4 format=3 uid="uid://bnq73h7eejnt3"]
+
+[ext_resource type="Script" uid="uid://bq1s26pg6w7i2" path="res://main.gd" id="1_glv2v"]
+[ext_resource type="PackedScene" uid="uid://bmvdgji3g3jrd" path="res://reference_food.tscn" id="2_r0du0"]
+[ext_resource type="Texture2D" uid="uid://b6a4p0eftqhg3" path="res://food/osara.png" id="2_uu6xs"]
 
 [node name="メイン画面" type="Node"]
+script = ExtResource("1_glv2v")
+reference_foods = ExtResource("2_r0du0")
+try_foods = ExtResource("2_r0du0")
 
-[node name="お手本" type="Node2D" parent="."]
-position = Vector2(301, 207)
+[node name="Reference" type="Sprite2D" parent="."]
+position = Vector2(341, 379.5)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_uu6xs")
 
-[node name="盛り付け" type="Node2D" parent="."]
-position = Vector2(787, 234)
+[node name="Try" type="Sprite2D" parent="."]
+position = Vector2(987, 377)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_uu6xs")
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="CountLabel" type="Label" parent="."]
+offset_left = 640.0
+offset_right = 680.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 40
+
+[node name="Button" type="Button" parent="."]
+offset_left = 548.0
+offset_top = 549.0
+offset_right = 799.0
+offset_bottom = 637.0
+theme_override_font_sizes/font_size = 40
+text = "採点"
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 534.0
+offset_top = 108.0
+offset_right = 801.0
+offset_bottom = 229.0
+theme_override_font_sizes/font_size = 100
+horizontal_alignment = 2
+
+[node name="RetryButton" type="Button" parent="."]
+visible = false
+offset_left = 514.0
+offset_top = 394.0
+offset_right = 828.0
+offset_bottom = 539.0
+theme_override_font_sizes/font_size = 100
+text = "再挑戦"
+
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="RetryButton" to="." method="_on_retry_button_pressed"]
