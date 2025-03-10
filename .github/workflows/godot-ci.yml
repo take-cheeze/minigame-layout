@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 
 env:
-  GODOT_VERSION: 4.4
+  GODOT_VERSION: 4.3
   EXPORT_NAME: minigame-layout
   PROJECT_PATH: .
 
